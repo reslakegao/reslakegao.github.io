@@ -1,0 +1,262 @@
+/* ========== Basic Reset ========== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: #e8ebff;
+  background:
+    radial-gradient(1200px 800px at 10% -10%, rgba(124,92,255,.25), transparent 60%),
+    radial-gradient(1000px 700px at 90% 10%, rgba(0,212,255,.18), transparent 60%),
+    linear-gradient(180deg, #0f1226 0%, #0b1028 100%);
+}
+a { color: inherit; text-decoration: none; }
+.container { width: 92%; max-width: 1200px; margin: 0 auto; }
+
+/* ========== Helpers ========== */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+.muted { color: #b8bdf2; text-align: center;}
+.eyebrow {
+  font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+  font-size: 12px; color: #dbe1ff; opacity: .8;
+}
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+  margin: 20px 0;
+}
+.skip-link {
+  position: absolute; left: -999px; top: -999px;
+  background:#111827; color:#fff; padding:12px 16px; border-radius:10px;
+}
+.skip-link:focus { left: 16px; top: 16px; z-index: 9999; }
+
+/* ========== Header & Nav ========== */
+header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(9,12,35,.85) 0%, rgba(9,12,35,.35) 100%);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 12px 0;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
+.logo {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: conic-gradient(from 180deg, #7c5cff, #00d4ff, #ff6b6b, #ffd166, #06d6a0, #7c5cff);
+  display: grid; place-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.logo svg { filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-links a {
+  padding: 10px 14px; border-radius: 12px; font-weight: 600;
+  color: #b8bdf2; border: 1px solid transparent;
+}
+.nav-links a:hover {
+  color: #fff; border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.04);
+}
+.menu-btn {
+  display: none; background: transparent; color: #e8ebff;
+  border: 1px solid rgba(255,255,255,.2); padding: 8px 10px; border-radius: 10px;
+}
+
+/* ========== Hero ========== */
+.hero { padding: 32px 0 24px;   
+  position: relative;
+  isolation: isolate;  
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 24px;
+}
+.hero-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 20px; border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+h1 { font-size: 36px; margin: 0 0 8px; line-height: 1.1; }
+.lead { color: #b8bdf2; font-size: 16px; }
+
+.cta { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;justify-content: right; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 700;
+  padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,.2);
+}
+.btn.primary {
+  background: linear-gradient(135deg, #7c5cff 0%, #00d4ff 100%);
+  color: #071018; border-color: transparent;
+}
+.btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* ========== Five Tiles ========== */
+.tiles {
+  margin-top: 20px;
+  display: flex; grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;          
+  flex-wrap: wrap;
+  margin: 40px auto; 
+}
+.tile {
+  position: relative; overflow: hidden; border-radius: 16px; min-height: 120px;
+  border: 1px solid rgba(255,255,255,.1);
+  transition: transform .2s ease;
+  flex: 0 1 200px;
+  text-align: center;
+}
+.tile:hover { transform: translateY(-2px); }
+.tile a { position: absolute; inset: 0; }
+.tile .inner {
+  padding: 16px; display: flex; justify-content: space-between; gap: 8px; align-items: end; height: 100%;
+}
+.tile h3 { margin: 0; font-size: 16px; }
+.badge {
+  font-size: 12px; font-weight: 700; padding: 6px 9px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+}
+.t1 { background: linear-gradient(135deg, #7c5cff 0%, #00d4ff 100%); }
+.t2 { background: linear-gradient(135deg, #ff6b6b 0%, #ffd166 100%); }
+.t3 { background: linear-gradient(135deg, #06d6a0 0%, #7c5cff 100%); }
+.t4 { background: linear-gradient(135deg, #ffd166 0%, #06d6a0 100%); }
+.t5 { background: linear-gradient(135deg, #00d4ff 0%, #ff6b6b 100%); }
+
+.magic-circles {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  pointer-events: none;
+  z-index: 0; 
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+
+
+
+
+.c1 {
+  width: 120px; height: 120px;
+  top: 40px; left: 60px;
+  background: linear-gradient(135deg, #7c5cff, #00d4ff);
+}
+.c2 {
+  width: 180px; height: 180px;
+  top: 20px; left: 180px;
+  background: linear-gradient(135deg, #ff6b6b, #ffd166);
+}
+.c3 {
+  width: 100px; height: 100px;
+  top: 80px; left: 360px;
+  background: linear-gradient(135deg, #06d6a0, #7c5cff);
+}
+.c4 {
+  width: 150px; height: 150px;
+  top: 140px; left: 100px;
+  background: linear-gradient(135deg, #ffd166, #06d6a0);
+}
+.c5 {
+  width: 130px; height: 130px;
+  top: 120px; left: 280px;
+  background: linear-gradient(135deg, #00d4ff, #ff6b6b);
+}
+#how{
+  background: #0e1228;
+  border: 1px solid rgba(255,255,255,.06); 
+  border-radius: 16px;
+  padding: 40px 20px;
+  margin-top: 24px;
+}
+
+/* ========== Info Cards ========== */
+section { padding: 28px 0; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+  border: 1px solid rgba(255,255,255,.08); padding: 16px; border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.card h3 { margin: 4px 0 8px; }
+.card p { color: #b8bdf2; margin: 0; }
+
+/* ========== How Steps ========== */
+.how { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
+.steps {
+  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+  border: 1px solid rgba(255,255,255,.08); padding: 20px; border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.step { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; }
+.num {
+  width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  font-weight: 800; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18);
+}
+
+/* ========== Footer ========== */
+footer { border-top: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(0deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,0) 100%);
+}
+.foot {
+  display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 20px 0; align-items: center;
+}
+.social { display: flex; gap: 10px; }
+.social a {
+  padding: 8px 12px; border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px; color: #b8bdf2;
+}
+.social a:hover { color: #fff; background: rgba(255,255,255,.04); }
+
+/* ========== Responsive  ========== */
+@media (max-width: 1000px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .tiles { grid-template-columns: repeat(3, 1fr); }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .how { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links {
+    display: none; position: absolute; right: 4%; top: 64px;
+    flex-direction: column; padding: 8px; background: #15183a;
+    border: 1px solid rgba(255,255,255,.08); border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  .nav-links.show { display: flex; }
+  .menu-btn { display: inline-flex; }
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+  .cards { grid-template-columns: 1fr; }
+  h1 { font-size: 28px; }
+
+
+  /*==========added 0 energy==========*/
+  .image-row {
+    flex-direction: column;
+  }
+  .image-row img {
+    width: 100%;
+  }
+}
+.image-row {
+  display: flex;
+  gap: 12px;      
+  justify-content: center; 
+  margin: 16px 0 24px;
+}
+
+.image-row img {
+  width: 48%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+

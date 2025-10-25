@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>J / P · Lifestyle — MBTI Quest</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ---- Scoped styles for this page  ---- */
+    .jp .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);font-weight:700;font-size:12px}
+    .jp .pill.j{background:linear-gradient(135deg,#ffd166 0%,#06d6a0 100%);color:#0a1120;border-color:transparent}
+    .jp .pill.p{background:linear-gradient(135deg,#00d4ff 0%,#ff6b6b 100%);color:#0a1120;border-color:transparent}
+
+    .jp .split-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 18px}
+    .jp .split-card{background:linear-gradient(180deg,rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .jp .split-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .jp .split-body{display:grid;grid-template-columns:1fr 1fr}
+    .jp .panel{padding:14px}
+    .jp .panel h4{margin:0 0 6px;font-size:14px;opacity:.9}
+    .jp .panel ul{margin:0;padding-left:18px;color:#b8bdf2}
+
+    /* ==== Unique elemen Planner Toggle  ==== */
+    .planner{margin-top:10px}
+    .planner input[type="radio"]{position:absolute;left:-9999px}
+    .planner .tabs{display:flex;gap:8px;margin-bottom:8px}
+    .planner label{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);cursor:pointer;background:rgba(255,255,255,.04);user-select:none;font-weight:700}
+    .planner label:hover{border-color:rgba(255,255,255,.3)}
+
+    /* highlight active tab using sibling combinator from the radios to .tabs */
+    #tab-j:checked ~ .tabs label[for="tab-j"]{background:linear-gradient(135deg,#ffd166 0%,#06d6a0 100%);color:#0a1120;border-color:transparent}
+    #tab-p:checked ~ .tabs label[for="tab-p"]{background:linear-gradient(135deg,#00d4ff 0%,#ff6b6b 100%);color:#0a1120;border-color:transparent}
+
+    .planner .panes{position:relative}
+    .planner .pane{border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);padding:12px;display:none}
+
+    #tab-j:checked ~ .panes #pane-j{display:block}
+    #tab-p:checked ~ .panes #pane-p{display:block}
+
+    .planner .row{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+    .planner .row:last-child{border-bottom:0}
+    .planner .time{font-weight:800;opacity:.85}
+    .planner .dot{width:10px;height:10px;border-radius:50%;background:conic-gradient(from 180deg,#7c5cff,#00d4ff,#ff6b6b,#ffd166,#06d6a0,#7c5cff);box-shadow:0 0 0 3px rgba(255,255,255,.06);margin-top:4px}
+    .planner .task{display:flex;gap:10px}
+    .planner .task strong{display:block}
+    .planner .meta{color:#b8bdf2;font-size:13px}
+
+    .legend{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}
+    .legend span{padding:6px 10px;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:12px}
+
+    @media(max-width:900px){.jp .split-body{grid-template-columns:1fr}.jp .split-cards{grid-template-columns:1fr}.planner .row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="jp">
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="logo"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="white"/></svg></span>
+        <span>MBTI <span style="opacity:.75">Quest</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#about">About</a>
+        <a href="index.html#how">How it works</a>
+
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>J / P · Lifestyle</h1>
+      <p class="lead">（Judging vs Perceiving）</p>
+      <div class="image-row">
+        <img src="image/J.png" alt="Judging">
+        <img src="image/P.png" alt="Perceiving">
+      </div>
+    </section>
+
+    <section id="what" class="hero-card">
+      <h2 style="text-align:center;">What is J / P？</h2>
+      <p><strong>J（Judging）</strong>：like planning, making lists and making decisions in advance. Having clear milestones makes me feel more at ease.</p>
+      <p><strong>P（Perceiving）</strong>：like flexibility, exploration and leaving room for maneuver. Rolling adjustments make me more energetic.</p>
+      <p>Both are normal. The key lies in<strong> the default organizational method</strong> the difference lies in whether to settle down first and then act, or to explore first and then converge.</p>
+    </section>
+
+    <section id="compare-alt">
+      <h2 style="text-align:center;">Common manifestations</h2>
+      <div class="split-cards">
+        <article class="split-card">
+          <div class="split-head">
+            <strong>Learning/project habits</strong>
+            <span class="pill j">J</span>
+            <span class="pill p">P</span>
+          </div>
+          <div class="split-body">
+            <div class="panel">
+              <h4>J · points</h4>
+              <ul>
+                <li>Make plans and set deadlines</li>
+                <li>Complete the controllable parts first and then expand</li>
+                <li>Prefer fixed processes and version nodes</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>P · points</h4>
+              <ul>
+                <li>Explore multiple options and methods</li>
+                <li>Allow for rolling updates of the plan</li>
+                <li>Prefers quick trial and error and inspiration</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="split-card">
+          <div class="split-head">
+            <strong>Risk and Balance</strong>
+            <span class="pill j">J</span>
+            <span class="pill p">P</span>
+          </div>
+          <div class="split-body">
+            <div class="panel">
+              <h4>J · May be biased</h4>
+              <ul>
+                <li>Overemphasizing acting according to plans</li>
+                <li>Intolerant to changes</li>
+                <li>It is easy to "stop when it's done" and neglect optimization</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>P · May be biased</h4>
+              <ul>
+                <li>Continuous exploration leads to procrastination</li>
+                <li>scope creep</li>
+                <li>The decision-making window missed the best opportunity</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Fixed structure: radios are siblings of .tabs and .panes so CSS ~ works -->
+    <section id="planner" class="planner">
+      <h2 style="text-align:center;">try to find side of your schedule is more like </h2>
+      <div class="legend">
+        <span> Find difference between J and P</span>
+
+      </div>
+
+      <!-- radios MUST come before .tabs and .panes at the same DOM level -->
+      <input type="radio" name="plan-tabs" id="tab-j" checked aria-controls="pane-j">
+      <input type="radio" name="plan-tabs" id="tab-p" aria-controls="pane-p">
+
+      <div class="tabs" role="tablist" aria-label="Planner toggle">
+        <label role="tab" for="tab-j" id="label-j" aria-controls="pane-j">J Mode schedule</label>
+        <label role="tab" for="tab-p" id="label-p" aria-controls="pane-p">P Mode schedule</label>
+      </div>
+
+      <div class="panes">
+        <div id="pane-j" class="pane" role="tabpanel" aria-labelledby="label-j">
+          <div class="row">
+            <div class="time">08:30 — 09:00</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Morning planning & prioritization </strong>
+                <div class="meta">Check To-do List → Lock in Today's 3 Most Important Items (MIT)</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="time">09:00 — 11:00</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Module A Milestone</strong>
+                <div class="meta">Complete the key points of PRD + Submit the first runnable version</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="time">13:30 — 15:00</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Code review & analysis</strong>
+                <div class="meta">Refer to the checklist and record the points for improvement next time</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="time">16:00 — 16:30</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Draft Plan for Tomorrow</strong>
+                <div class="meta">Update the burn-down chart and confirm dependencies and risks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="pane-p" class="pane" role="tabpanel" aria-labelledby="label-p">
+          <div class="row">
+            <div class="time">09:30 — 10:30</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Inspiration sampling</strong>
+                <div class="meta">Search for 3 ideas → Quickly verify the draft</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="time">11:00 — 12:00</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Choose the most feasible route</strong>
+                <div class="meta">Compare the input/output and retain the one primary and one backup plan</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="time">14:00 — 15:30</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Rolling iteration</strong>
+                <div class="meta">Take small steps and run fast → Feedback → Fine-tune the goals and pace</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="time">17:00 — 17:20</div>
+            <div class="task"><span class="dot"></span>
+              <div>
+                <strong>Convergence and Recording</strong>
+                <div class="meta">Accumulate experience and list two things you want to try tomorrow</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary">
+      <h2 style="text-align:center;">Totally
+      </h2>
+      <p style="text-align:center;"><strong>J/P is not "fixed vs. chaotic", but rather "the ratio of certainty to flexibility"</strong> 
+        <br>Knowing your default values enables you to adjust the rhythm more intelligently</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <small class="muted">© <span id="y"></span> MBTI Quest. All rights reserved.</small>
+      <div class="social" aria-label="External links">
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn=document.getElementById('menuBtn');
+    const links=document.getElementById('navLinks');
+    if(btn&&links){btn.addEventListener('click',function(){const e=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!e));links.classList.toggle('show');});}
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('*').forEach(el=>el.style.transition='none');}
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S / N · Information — MBTI Quest</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" fill="white"/>
+          </svg>
+        </span>
+        <span>MBTI <span style="opacity:0.75">Quest</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#about">About</a>
+        <a href="index.html#how">How it works</a>
+
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>S / N · Information</h1>
+      <p class="lead">（Sensing vs Intuition）</p>
+
+      <div style="display:flex; gap:12px; justify-content:center; margin:16px 0 24px; flex-wrap:wrap;">
+        <img src="image/S.png" alt="Sensing" style="width:48%; min-width:280px; border-radius:8px; object-fit:cover;">
+        <img src="image/N.png" alt="Intuition" style="width:48%; min-width:280px; border-radius:8px; object-fit:cover;">
+      </div>
+    </section>
+
+    <section id="what" class="hero-card">
+      <h2 style="text-align:center;">What is S / N？</h2>
+      <p><strong>S（Sensing）</strong>：Pay more attention to observable facts, details and what is happening at present. I like specific data, step-by-step explanations and verifiable evidence.</p>
+      <p><strong>N（Intuition）</strong>：Pay more attention to patterns, possibilities and underlying meanings. I like to conceptualize, associate and understand things from a big picture.</p>
+      <p>Both are effective ways to obtain information. You use S and N every day, but<strong> more accustomed to using which one first</strong></p>
+    </section>
+
+    <section id="compare">
+      <h2 style="text-align:center;">A simple comparison</h2>
+      <ul>
+        <li><strong>learning kit</strong>：S likes examples and steps; N likes principles and frameworks.</li>
+        <li><strong>means of expression</strong>：S is more "literal" and methodical; Be more "metaphorical", jump to the conclusion and then fill in the details.</li>
+        <li><strong>attention</strong>：S will be uneasy about imprecise descriptions. N will get tired of content that only provides details and has no "meaning".</li>
+        <li><strong>Preference task</strong>: S conducts processes, tests, and verifications; N Conceives, reorganizes, and identifies trends.</li>
+      </ul>
+    </section>
+
+    <section id="table">
+  <h2 style="text-align:center;">Small comparison table</h2>
+  <div style="overflow-x:auto;">
+    <table style="width:100%; border-collapse:collapse; font-size:15px; border-radius:8px; overflow:hidden;">
+      <thead>
+        <tr style="background:rgba(255,255,255,.08);">
+          <th> </th>
+          <th style="padding:10px; text-align:left; border-bottom:1px solid rgba(255,255,255,.2);">S</th>
+          <th style="padding:10px; text-align:left; border-bottom:1px solid rgba(255,255,255,.2);">N</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:rgba(255,255,255,.02);">
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">be good at</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">Implementation details, reproduction steps, and quality control</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">Abstract modeling, discovering patterns, and exploring possibilities</td>
+        </tr>
+        <tr>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">risk</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">It's easy to fall into the trap of "seeing only the trees.</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">It is easy to overlook the "operational details"</td>
+        </tr>
+        <tr style="background:rgba(255,255,255,.02);">
+          <td style="padding:10px;">tips</td>
+          <td style="padding:10px;">Regularly look up at the overall goal</td>
+          <td style="padding:10px;">List three executable steps for the idea</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+    <section id="tips">
+      <h2 style="text-align:center;">Study/life tips</h2>
+      <ul>
+        <li><strong>To S</strong>：When doing exercises, casually write down "What does this knowledge point do in the whole?" Draw a super-simple large picture after each lesson.</li>
+        <li><strong>To N</strong>：Turn your ideas into a list; Write "How to verify next and what indicators to use" for each point.</li>
+        <li><strong>Team works</strong>：S controls quality and milestones; N is responsible for creativity and direction setting, and complementarity is more efficient.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 style="text-align:center;">Totally</h2>
+      <p style="text-align:center;"><strong>S/N is not about the level of proficiency, but rather about "how one is more accustomed to obtaining information</strong>
+        <br> Knowing your starting point enables you to choose the right learning method</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <small class="muted">© <span id="y"></span> MBTI Quest. All rights reserved.</small>
+      <div class="social" aria-label="External links">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Twitter">Twitter</a>
+        <a href="#" aria-label="Email">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const links = document.getElementById('navLinks');
+    if (btn && links) {
+      btn.addEventListener('click', function () {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        links.classList.toggle('show');
+      });
+    }
+  </script>
+
+</body>
+</html>

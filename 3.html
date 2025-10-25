@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T / F · Decisions — MBTI Quest</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* --- Scoped styles for this page only --- */
+    .tf-page .pill {
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);
+      font-weight:700;font-size:12px;letter-spacing:.02em
+    }
+    .tf-page .pill.t{background:linear-gradient(135deg,#06d6a0 0%,#7c5cff 100%);color:#0a1120;border-color:transparent}
+    .tf-page .pill.f{background:linear-gradient(135deg,#ff6b6b 0%,#ffd166 100%);color:#0a1120;border-color:transparent}
+
+    .tf-page .split-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 18px}
+    .tf-page .split-card{background:linear-gradient(180deg,rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+      border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .tf-page .split-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.1)}
+    .tf-page .split-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    .tf-page .panel{padding:14px}
+    .tf-page .panel h4{margin:0 0 6px;font-size:14px;opacity:.9}
+    .tf-page .panel ul{margin:0;padding-left:18px;color:#b8bdf2}
+
+    /* premium accordion (details/summary) */
+    .tf-accordion details{position:relative;margin:10px 0;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;
+      background:linear-gradient(180deg,rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+      transition:box-shadow .2s ease, border-color .2s ease}
+    .tf-accordion details:hover{box-shadow:0 10px 30px rgba(0,0,0,.35);border-color:rgba(255,255,255,.18)}
+    .tf-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:14px 16px}
+    .tf-accordion summary::-webkit-details-marker{display:none}
+    .tf-accordion .icon{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+      background:conic-gradient(from 180deg,#7c5cff,#00d4ff,#ff6b6b,#ffd166,#06d6a0,#7c5cff);filter:saturate(1.1)}
+    .tf-accordion .title{font-weight:800}
+    .tf-accordion .chev{margin-left:auto;transition:transform .2s ease;opacity:.9}
+    .tf-accordion details[open] .chev{transform:rotate(90deg)}
+    .tf-accordion .content{padding:0 16px 16px;}
+
+    .tf-accordion details .content{max-height:0;overflow:hidden;transition:max-height .25s ease}
+    .tf-accordion details[open] .content{max-height:300px}
+
+    @media (max-width: 820px){
+      .tf-page .split-body{grid-template-columns:1fr}
+      .tf-page .split-cards{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body class="tf-page">
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="white"/></svg>
+        </span>
+        <span>MBTI <span style="opacity:.75">Quest</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#about">About</a>
+        <a href="index.html#how">How it works</a>
+        
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>T / F · Decisions</h1>
+      <p class="lead">（Thinking vs Feeling）</p>
+      <div class="image-row">
+        <img src="image/T.png" alt="Thinking">
+        <img src="image/F.png" alt="Feeling">
+      </div>
+    </section>
+
+    <section id="what" class="hero-card">
+      <h2 style="text-align:center;">What is T / F？</h2>
+      <p><strong>T（Thinking）</strong>：It is more inclined to judge by logic, analysis and principles. Pay attention to right and wrong, standards and objective consistency.</p>
+      <p><strong>F（Feeling）</strong>：I am more inclined to judge by values, relationships and feelings. Pay attention to whether it is harmonious, fair and whether others are taken care of</p>
+      <p>This is not "cold-blooded vs. sentimental", but<strong> more common starting points for decision-making</strong></p>
+    </section>
+
+
+    <section id="compare-alt">
+      <h2 style="text-align:center;">Common manifestations</h2>
+
+      <!-- Strengths -->
+      <div class="split-cards">
+        <article class="split-card">
+          <div class="split-head">
+            <strong>Strengths</strong>
+            <span class="pill t">T</span>
+            <span class="pill f">F</span>
+          </div>
+          <div class="split-body">
+            <div class="panel">
+              <h4>T · Key Points</h4>
+              <ul>
+                <li>Analyze the logic and deduce the plan</li>
+                <li>Maintain objectivity and consistency based on principles</li>
+                <li>Quickly locate vulnerabilities and boundaries</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>F · Key Points</h4>
+              <ul>
+                <li>Understand the atmosphere and the scope of influence</li>
+                <li>Coordinate relations and promote consensus</li>
+                <li>Balance fairness and acceptability</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Risks -->
+        <article class="split-card">
+          <div class="split-head">
+            <strong>Risks</strong>
+            <span class="pill t">T</span>
+            <span class="pill f">F</span>
+          </div>
+          <div class="split-body">
+            <div class="panel">
+              <h4> T · Possible bias</h4>
+              <ul>
+                <li>Plain language seems inhumane</li>
+                <li>Ignore the human hearts and costs at the time of implementation</li>
+                <li>The priority of standards leads to a low communication temperature</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h4>F · Possible bias</h4>
+              <ul>
+                <li>Excessive accommodation makes it difficult to make decisions</li>
+                <li>Make passive concessions in complex games</li>
+                <li>The ambiguity of standards leads to wavering in implementation</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tips -->
+      <article class="split-card">
+        <div class="split-head">
+          <strong>Tips</strong>
+          <span class="pill t">T</span>
+          <span class="pill f">F</span>
+        </div>
+        <div class="split-body">
+          <div class="panel">
+            <h4>For T</h4>
+            <ul>
+              <li>Beyond logic, add a sentence: "How would people feel?"</li>
+              <li>When reviewing, check the tone and rhythm of communication</li>
+              <li>Make a "stakeholder map" before making key decisions</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h4>For F</h4>
+            <ul>
+              <li>Beyond the relationship, add a question: "What is the standard?"</li>
+              <li>Write down three measurable criteria for judgment</li>
+              <li>Transform "who to take care of" into clear rules</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="examples" class="tf-accordion">
+      <h2 style="text-align:center;">click to show examples</h2>
+
+      <details>
+        <summary>
+          <span class="icon">🧩</span>
+          <span class="title">Team discussion</span>
+          <span class="chev">›</span>
+        </summary>
+        <div class="content">
+          <p>T: Directly raise the issue and logical loopholes; <br>F: First, confirm the emotions and relationships, and then organize the opinions.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="icon">📚</span>
+          <span class="title">Course/Task selection</span>
+          <span class="chev">›</span>
+        </summary>
+        <div class="content">
+          <p>T: More emphasis is placed on verifiable learning benefits and difficulty gradients;<br> F: I care more about the mentor's style, the class atmosphere and the experience of cooperation.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="icon">🤝</span>
+          <span class="title">resolve conflict</span>
+          <span class="chev">›</span>
+        </summary>
+        <div class="content">
+          <p>T: First, clarify the boundaries between facts and responsibilities; <br>F: First, soothe the emotions, and then seek a transitional solution that is acceptable to all parties.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="summary">
+      <h2 style="text-align:center;">Totally</h2>
+      <p style="text-align:center;"><strong>T/F is not about "cold rationality vs. being emotional", but rather about "which type of standard to refer to first".</strong> Putting both perspectives on the table will make decisions more stable.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <small class="muted">© <span id="y"></span> MBTI Quest. All rights reserved.</small>
+      <div class="social" aria-label="External links">
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const links = document.getElementById('navLinks');
+    if (btn && links) {
+      btn.addEventListener('click', function () {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        links.classList.toggle('show');
+      });
+    }
+
+    // Respect reduced motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(function (el) { el.style.transition = 'none'; });
+    }
+  </script>
+</body>
+</html>

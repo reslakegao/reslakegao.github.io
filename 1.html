@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E / I · Energy — MBTI Quest</title>
+  <link rel="stylesheet" href="styles.css">
+<style>
+/* ====== Energy Ticket====== */
+.energy-ticket {
+  --p: 50;
+  --e: #ff7a59; 
+  --i: #7aa2ff;
+  --bg: rgba(255,255,255,.06);
+  --bd: rgba(255,255,255,.16);
+  --text: #fff;
+}
+
+.ei-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 8px 0 14px;
+}
+
+.ei-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ei-radio  .chip {
+  border: 1px solid var(--bd);
+  background: linear-gradient(135deg, #7c5cff 0%, #00d4ff 100%);
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  user-select: none;
+}
+.ei-radio:checked  .chip {
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.05));
+  border-color: rgba(255,255,255,.35);
+  transform: translateY(-1px);
+}
+
+.ei-meter {
+  position: relative;
+  height: 22px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg,
+      var(--e) 0 calc(var(--p) * 1%),
+      var(--i) calc(var(--p) * 1%) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
+  transition: background .35s ease;
+  overflow: hidden;
+}
+
+.ei-meter .track {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(255,255,255,.18) 0 2px,
+      transparent 2px 14px);
+  opacity: .25;
+  pointer-events: none;
+}
+
+.ei-meter::after {
+  content: "";
+  position: absolute; top: 50%;
+  left: calc(var(--p) * 1%);
+  transform: translate(-50%, -50%);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.08);
+  transition: left .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.cap {
+  position: absolute; top: 50%;
+  transform: translateY(-50%);
+  font-weight: 800; font-size: 14px; opacity: .85;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  pointer-events: none; user-select: none;
+}
+.cap-e { left: -22px; }
+.cap-i { right: -18px; }
+
+.ei-readouts { margin-top: 10px; text-align: center; }
+.readout { display: none; opacity: .9; }
+
+#ei0:checked  ~ .ei-meter { --p: 0;  }
+#ei25:checked ~ .ei-meter { --p: 25; }
+#ei50:checked ~ .ei-meter { --p: 50; }
+#ei75:checked ~ .ei-meter { --p: 75; }
+#ei100:checked~ .ei-meter { --p: 100; }
+
+#ei0:checked  ~ .ei-readouts .r0   { display: block; }
+#ei25:checked ~ .ei-readouts .r25  { display: block; }
+#ei50:checked ~ .ei-readouts .r50  { display: block; }
+#ei75:checked ~ .ei-readouts .r75  { display: block; }
+#ei100:checked~ .ei-readouts .r100 { display: block; }
+
+.ei-chips .chip { min-width: 72px; text-align: center; }
+.ei-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ei-chips .chip {
+  border: 1px solid var(--bd);
+  background: linear-gradient(135deg, #7c5cff 0%, #00d4ff 100%);
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  user-select: none;
+  min-width: 72px;
+  text-align: center;
+}
+
+#ei0:checked   ~ .ei-chips label[for="ei0"],
+#ei25:checked  ~ .ei-chips label[for="ei25"],
+#ei50:checked  ~ .ei-chips label[for="ei50"],
+#ei75:checked  ~ .ei-chips label[for="ei75"],
+#ei100:checked ~ .ei-chips label[for="ei100"] {
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.05));
+  border-color: rgba(255,255,255,.35);
+  transform: translateY(-1px);
+}
+
+#ei0:checked   ~ .ei-meter { --p: 0; }
+#ei25:checked  ~ .ei-meter { --p: 25; }
+#ei50:checked  ~ .ei-meter { --p: 50; }
+#ei75:checked  ~ .ei-meter { --p: 75; }
+#ei100:checked ~ .ei-meter { --p: 100; }
+
+#ei0:checked   ~ .ei-readouts .r0   { display: block; }
+#ei25:checked  ~ .ei-readouts .r25  { display: block; }
+#ei50:checked  ~ .ei-readouts .r50  { display: block; }
+#ei75:checked  ~ .ei-readouts .r75  { display: block; }
+#ei100:checked ~ .ei-readouts .r100 { display: block; }
+
+@media (prefers-color-scheme: light) {
+  .energy-ticket { --bg: rgba(0,0,0,.04); --bd: rgba(0,0,0,.12); }
+  .ei-meter { box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+}
+</style>
+
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" fill="white"/>
+          </svg>
+        </span>
+        <span>MBTI <span style="opacity:0.75">Quest</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#about">About</a>
+        <a href="index.html#how">How it works</a>
+
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>E / I · Energy</h1>
+      <p class="lead">（Extraversion vs Introversion）</p>
+      <div class="image-row">
+      <img src="image/E.png">
+      <img src="image/I.png">
+      </div>
+    </section>
+
+    <section id="what" class="hero-card">
+      <h2 style="text-align:center;">What is E / I？</h2>
+      <p><strong>E（Extraversion）</strong>：Attention is more likely to be directed towards the outside world (people, activities, interactions). Many times, it's easier to "recharge" by thinking while doing things, chatting with people or participating in activities.</p>
+      <p><strong>I（Introversion）</strong>：Attention is more likely to be directed towards the inner world (thinking, ideas, quietness). Usually, think it through before taking action. Being alone or doing your own things can help you regain your energy.</p>
+      <p>This is not a judgment of good or bad personality, nor is it a label of "socially awkward or socially sensitive". Both E and I are normal, and everyone uses both, but<strong> which state are you more accustomed to starting from</strong></p>
+    </section>
+
+    <section id="compare">
+      <h2 style="text-align:center;">A simple comparison</h2>
+      <ul>
+        <li><strong>After school/work</strong>：E might want to go for a walk with classmates/friends. I would rather have some quiet time first before socializing.</li>
+        <li><strong>encounter a problem</strong>：The habit for E is to speak out first and think about it together. I is used to thinking it over in my mind first.</li>
+        <li><strong>Classroom/Meeting</strong>：E is likely to raise his hand first to speak. I often wait until I think it through before sharing.</li>
+        <li><strong>Weekend arrangements</strong>：feel energetic when the E arrangement is full. I feel tired when my schedule is too full.</li>
+      </ul>
+    </section>
+
+    <section id="myths">
+      <h2 style="text-align:center;">Common misunderstandings</h2>
+      <ul>
+        <li><strong>Misunderstanding 1：</strong> "Outgoing = talkative, introverted = shy." " In fact, E/I refers to the direction of energy, not social skills.</li>
+        <li><strong>Misunderstanding 2：</strong> Introverts don't like people. In fact, I also value people and relationships, but I just need some alone time to recharge.</li>
+        <li><strong>Misunderstanding 3：</strong> "Never change in a lifetime." " In fact, context can affect performance, such as subjects, roles, cultural environments, etc.</li>
+      </ul>
+    </section>
+
+<section id="energy-ticket" class="energy-ticket hero-card">
+  <h2 class="center">Energy Ticket</h2>
+  <p class="muted center">You can choose your Energy Level below～</p>
+
+  <input class="ei-radio" type="radio" name="ei" id="ei0" checked>
+  <input class="ei-radio" type="radio" name="ei" id="ei25">
+  <input class="ei-radio" type="radio" name="ei" id="ei50">
+  <input class="ei-radio" type="radio" name="ei" id="ei75">
+  <input class="ei-radio" type="radio" name="ei" id="ei100">
+
+  <div class="ei-meter" role="img" aria-label="E/I energy balance">
+    <span class="cap cap-e" aria-hidden="true">E</span>
+    <span class="cap cap-i" aria-hidden="true">I</span>
+    <span class="track" aria-hidden="true"></span>
+  </div>
+
+  <div class="ei-chips">
+    <label class="chip" for="ei0"   title="more sided I">I</label>
+    <label class="chip" for="ei25"  title="sided I">I+</label>
+    <label class="chip" for="ei50"  title="fair">=</label>
+    <label class="chip" for="ei75"  title="sided E">E+</label>
+    <label class="chip" for="ei100" title="more sided E">E</label>
+  </div>
+
+
+  <div class="ei-readouts">
+    <p class="readout r0">| 0% E · 100% |  <br>Deep dive mode, leave yourself a quiet little space</p>
+    <p class="readout r25">| 25% E · 75% | <br>Slow down and warm up. Start with the independent small tasks</p>
+    <p class="readout r50">| 50% E · 50% | <br>It's completely balanced</p>
+    <p class="readout r75">| 75% E · 25% | <br>Social acceleration, create a group for a small collaboration </p>
+    <p class="readout r100">| 100% E · 0% | <br>Social experts are online to organize flash mob brainstorming sessions</p>
+  </div>
+</section>
+
+    <section id="summary">
+      <h2 style="text-align:center;">Totally</h2>
+      <p style="text-align:center;"><strong>E/I is not good or bad, but rather "where to obtain energy first".</strong><br>Understanding your own preferences can help you arrange your study pace, socializing methods and rest time.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <small class="muted">© <span id="y"></span> MBTI Quest. All rights reserved.</small>
+      <div class="social" aria-label="External links">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="Twitter">Twitter</a>
+        <a href="#" aria-label="Email">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const links = document.getElementById('navLinks');
+    if (btn && links) {
+      btn.addEventListener('click', function () {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        links.classList.toggle('show');
+      });
+    }
+  </script>
+</body>
+</html>

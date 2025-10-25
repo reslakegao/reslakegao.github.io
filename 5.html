@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overall · MBTI Quest</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .overall-wrap{max-width:1080px;margin:0 auto}
+    .intro{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
+    .overall-layout{display:flex;gap:20px;align-items:flex-start;margin-top:10px}
+    .left{flex:1;min-width:300px}
+    .right{flex:1.2;min-width:340px;position:sticky;top:88px}
+    @media (max-width:900px){.overall-layout{flex-direction:column}.right{position:static;top:auto}}
+
+    .grid-16{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .btn2{display:block;text-align:center;padding:10px 12px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.25);font-weight:700}
+    .btn2:hover{border-color:rgba(255,255,255,.5)}
+    .type-badge{display:inline-block;font-weight:800;border:1px solid rgba(255,255,255,.35);
+      border-radius:999px;padding:6px 10px;margin-right:8px}
+
+    .result-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:18px;
+
+  width:100%;
+  min-height:400px;
+  max-height:500px;
+  overflow:auto;
+}
+    .result{position:relative}
+    .result > section{display:none}
+    .placeholder{display:block}
+
+    #ESTJ:target ~ .placeholder,
+    #ESTP:target ~ .placeholder,
+    #ESFJ:target ~ .placeholder,
+    #ESFP:target ~ .placeholder,
+    #ENTJ:target ~ .placeholder,
+    #ENTP:target ~ .placeholder,
+    #ENFJ:target ~ .placeholder,
+    #ENFP:target ~ .placeholder,
+    #ISTJ:target ~ .placeholder,
+    #ISTP:target ~ .placeholder,
+    #ISFJ:target ~ .placeholder,
+    #ISFP:target ~ .placeholder,
+    #INTJ:target ~ .placeholder,
+    #INTP:target ~ .placeholder,
+    #INFJ:target ~ .placeholder,
+    #INFP:target ~ .placeholder{display:none}
+
+    #ESTJ:target,
+    #ESTP:target,
+    #ESFJ:target,
+    #ESFP:target,
+    #ENTJ:target,
+    #ENTP:target,
+    #ENFJ:target,
+    #ENFP:target,
+    #ISTJ:target,
+    #ISTP:target,
+    #ISFJ:target,
+    #ISFP:target,
+    #INTJ:target,
+    #INTP:target,
+    #INFJ:target,
+    #INFP:target{display:block}
+
+    .muted{opacity:.8}
+
+    html, body {height: 100%; margin: 0;}
+    body {display: flex; flex-direction: column;}
+    main {flex: 1;}
+    footer {
+        background: rgba(255,255,255,0.05);
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding: 12px 0;
+        text-align: center;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="white"/></svg>
+        </span>
+        <span>MBTI <span style="opacity:.75">Quest</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container overall-wrap">
+    <p></p>
+    <section class="hero intro">
+      <h1 style="margin-top:0;">Explore the MBTI · 16 personality types</h1>
+      <div class="divider"></div>
+      <p>Click on any 4-letter type on the left (for example <strong>ESTJ</strong>), the introduction and key points are displayed in real time on the right side</p>
+    </section>
+
+    <div class="overall-layout">
+      <section class="left">
+        <h2 style="margin:0 0 10px;">Choose Type</h2>
+        <div class="grid-16">
+          <a class="btn2" href="#ESTJ">ESTJ</a>
+          <a class="btn2" href="#ESTP">ESTP</a>
+          <a class="btn2" href="#ESFJ">ESFJ</a>
+          <a class="btn2" href="#ESFP">ESFP</a>
+
+          <a class="btn2" href="#ENTJ">ENTJ</a>
+          <a class="btn2" href="#ENTP">ENTP</a>
+          <a class="btn2" href="#ENFJ">ENFJ</a>
+          <a class="btn2" href="#ENFP">ENFP</a>
+
+          <a class="btn2" href="#ISTJ">ISTJ</a>
+          <a class="btn2" href="#ISTP">ISTP</a>
+          <a class="btn2" href="#ISFJ">ISFJ</a>
+          <a class="btn2" href="#ISFP">ISFP</a>
+
+          <a class="btn2" href="#INTJ">INTJ</a>
+          <a class="btn2" href="#INTP">INTP</a>
+          <a class="btn2" href="#INFJ">INFJ</a>
+          <a class="btn2" href="#INFP">INFP</a>
+        </div>
+        <p class="muted" style="margin-top:10px">
+          Click here to clear the selection 👉 
+          <a class="btn2" href="#">START</a>
+        </p>
+      </section>
+ 
+      <section class="right result-card">
+        <div class="result">
+          <section id="ESTJ">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span class="type-badge">ESTJ</span><small class="muted">Extroversion · Feeling · Thinking · Judging</small>
+            </div>
+            <div class="divider"></div>
+            <p>ESTJs are practical, organized, and decisive individuals who value structure and efficiency. They are natural leaders who like to take charge, set clear goals, and ensure that everything runs smoothly. 
+              <br><br>Known for their strong sense of responsibility and dedication, ESTJs prefer traditions and established systems, yet they can be very effective in managing people and resources to achieve results. They thrive in environments where order, rules, and reliability are emphasized.</p>
+          </section>
+
+          <section id="ESTP">
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <span class="type-badge">ESTP</span><small class="muted">Extroversion · Feeling · Thinking · Perception</small>
+            </div>
+            <div class="divider"></div>
+            <p>ESTPs are energetic, spontaneous, and action-oriented individuals who thrive on excitement and real-world experiences.
+              <br><br> They’re practical problem-solvers who prefer hands-on challenges over abstract theories, often charming and persuasive in social settings. Quick-thinking and adaptable, ESTPs live in the moment and enjoy making things happen rather than just talking about them.</p>
+          </section>
+
+          <section id="ESFJ">
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ESFJ</span><small class="muted">Extraversion · Feeling · Emotion · Judgment</small></div>
+            <div class="divider"></div>
+            <p>ESFJs are warm, caring, and highly social individuals who love creating harmony and helping others. They value tradition, responsibility, and strong relationships, often putting others’ needs before their own. 
+              <br><br>Organized and dependable, ESFJs thrive in structured environments and take pride in keeping things running smoothly while making people feel appreciated and supported.</p>
+          </section>
+
+          <section id="ESFP"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ESFP</span><small class="muted">Extraversion · Sensation · Emotion · Perception</small></div>
+            <div class="divider"></div>
+            <p>ESFPs are lively, spontaneous, and fun-loving people who bring energy to any situation. They live in the moment, enjoy new experiences, and have a natural talent for entertaining and connecting with others.
+              <br><br> Warm and expressive, ESFPs value friendship, beauty, and excitement, preferring to learn through doing rather than planning too much.</p>
+          </section>
+
+          <section id="ENTJ"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ENTJ</span><small class="muted">Outgoing · Intuitive · Thinking · Judging</small></div>
+            <div class="divider"></div>
+            <p>ENTJs are bold, strategic, and confident leaders who naturally take charge and organize people toward a clear vision. They think long-term, make decisive plans, and value efficiency and achievement above all. 
+              <br><br>Ambitious and assertive, ENTJs are driven to turn ideas into reality and rarely back down from a challenge</p>
+          </section>
+
+          <section id="ENTP"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ENTP</span><small class="muted">Extroversion · Intuition · Thinking · Perception</small></div>
+            <div class="divider"></div>
+            <p>ENTPs are quick-witted, curious, and inventive thinkers who love exploring new ideas and challenging conventions. They thrive on debate, creativity, and possibilities, often seeing connections others miss.
+              <br><br> Adaptable and enthusiastic, ENTPs enjoy pushing boundaries, inspiring others, and turning bold ideas into exciting opportunities. </p>
+          </section>
+
+          <section id="ENFJ"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ENFJ</span><small class="muted">Extroversion · Intuition · Emotion · Judgment</small></div>
+            <div class="divider"></div>
+            <p>ENFJs are charismatic, empathetic, and inspiring leaders who excel at understanding and motivating others. 
+              <br><br>They value harmony, connection, and personal growth, often putting others’ needs first. With strong communication skills and a visionary mindset, ENFJs strive to create positive change and bring people together toward a common goal. </p>
+          </section>
+
+          <section id="ENFP"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ENFP</span><small class="muted">Extroversion · Intuition · Emotion · Perception</small></div>
+            <div class="divider"></div>
+            <p>ENFPs are enthusiastic, imaginative, and free-spirited individuals who see life as full of possibilities. They’re deeply curious, empathetic, and driven by passion rather than routine. 
+              <br><br>With their creativity and optimism, ENFPs inspire others, often chasing new adventures and ideas that align with their values and emotions.</p>
+          </section>
+
+          <section id="ISTJ"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ISTJ</span><small class="muted">Introversion · Feeling · Thinking · Judging</small></div>
+            <div class="divider"></div>
+            <p>ISTJs are responsible, practical, and detail-oriented individuals who value order, duty, and reliability. 
+              <br><br>They prefer clear rules and logical systems, taking pride in doing things the right way. Loyal and hardworking, ISTJs focus on facts and results, often becoming the steady backbone of any group or organization. </p>
+          </section>
+
+          <section id="ISTP"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ISTP</span><small class="muted">Introversion · Feeling · Thinking · Perception</small></div>
+            <div class="divider"></div>
+            <p>ISTPs are independent, analytical, and hands-on problem solvers who love figuring out how things work. 
+              <br><br>They’re calm under pressure and quick to take action when needed, often excelling in practical or technical tasks. Adaptable and curious, ISTPs value freedom and prefer to learn by doing rather than following strict plans.</p>
+          </section>
+
+          <section id="ISFJ"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ISFJ</span><small class="muted">Introversion · Feeling · Emotion · Judgment</small></div>
+            <div class="divider"></div>
+            <p>ISFJs are gentle, loyal, and dependable people who care deeply about others and take their responsibilities seriously. They value harmony, stability, and kindness, often working quietly behind the scenes to support those they love.
+              <br><br> Practical yet warm-hearted, ISFJs blend empathy with dedication, creating comfort and trust wherever they go. </p>
+          </section>
+
+          <section id="ISFP"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">ISFP</span><small class="muted">Introversion · Feeling · Emotion · perception</small></div>
+            <div class="divider"></div>
+            <p>ISFPs are gentle, creative, and free-spirited individuals who live in the moment and appreciate beauty in everyday life. They express themselves through art, action, or quiet kindness rather than words. 
+              <br><br>Sensitive yet independent, ISFPs value authenticity and prefer to follow their heart instead of rigid rules.</p>
+          </section>
+
+          <section id="INTJ"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">INTJ</span><small class="muted">Introversion · Intuition · Thinking · Judgment</small></div>
+            <div class="divider"></div>
+            <p>INTJs are strategic, independent, and visionary thinkers who always look at the bigger picture. They value logic, competence, and efficiency, often planning far ahead to turn complex ideas into reality.
+              <br><br> Reserved but confident, INTJs trust their insight and prefer working toward long-term goals rather than short-term distractions. </p>
+          </section>
+
+          <section id="INTP"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">INTP</span><small class="muted">Introversion · Intuition · Thinking · Perception</small></div>
+            <div class="divider"></div>
+            <p>INTPs are curious, analytical, and deeply thoughtful individuals who love exploring complex ideas and theories. They value logic, independence, and intellectual freedom, often losing track of time while chasing an interesting concept. 
+              <br><br>Creative yet reserved, INTPs question everything and enjoy understanding how and why things work. </p>
+          </section>
+
+          <section id="INFJ"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">INFJ</span><small class="muted">Introversion · Intuition · Emotion · Judgment</small></div>
+            <div class="divider"></div>
+            <p>INFJs are insightful, compassionate, and idealistic individuals who strive to understand people and inspire positive change. They see meaning in everything and often balance deep empathy with strong principles. 
+              <br><br>Quiet yet determined, INFJs follow their vision with purpose, seeking harmony and authenticity in both themselves and the world around them. </p>
+          </section>
+
+          <section id="INFP"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span class="type-badge">INFP</span><small class="muted">Introversion · Intuition · Emotion · Perception</small></div>
+            <div class="divider"></div>
+            <p>INFPs are gentle, imaginative, and deeply idealistic souls who value authenticity and inner meaning above all else. 
+              <br><br>Guided by strong personal values, they dream of making the world kinder and more beautiful. Though reserved, INFPs feel emotions deeply and express themselves through creativity, empathy, and heartfelt connection. </p>
+          </section>
+
+
+
+
+
+
+
+
+
+          <div class="placeholder">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span class="type-badge">— — — —</span>
+              <small class="muted">Please select any type on the left</small>
+            </div>
+            <div class="divider"></div>
+            <h3>HOW TO USE</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p class="muted">Click on one of the 16 types on the left (such as <strong>INTJ</strong>), Here, an introduction, advantages and suggestions for this type will be presented.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <p></p>
+  <footer>
+    <div class="container foot">
+      <small class="muted">© MBTI Quest. All rights reserved.</small>
+      <div class="social">
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
